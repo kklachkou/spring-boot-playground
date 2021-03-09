@@ -1,4 +1,3 @@
-FROM openjdk:8-jdk-alpine
+FROM adoptopenjdk/openjdk11:jre-11.0.10_9-alpine
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
-RUN apk add --update netcat-openbsd && rm -rf /var/cache/apk/*
