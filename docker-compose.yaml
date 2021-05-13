@@ -52,17 +52,17 @@ services:
       - ./db/init_schema.sql:/docker-entrypoint-initdb.d/1.sql
       - ./db/init_data.sql:/docker-entrypoint-initdb.d/2.sql
 
-  phpmyadmin:
-    depends_on:
-      - db
-    image: phpmyadmin/phpmyadmin
-    restart: "no"
-    ports:
-      - ${PHPMYADMIN_PORT}:80
-    environment:
-      TZ: ${TZ}
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+#  phpmyadmin:
+#    depends_on:
+#      - db
+#    image: phpmyadmin/phpmyadmin
+#    restart: "no"
+#    ports:
+#      - ${PHPMYADMIN_PORT}:80
+#    environment:
+#      TZ: ${TZ}
+#      PMA_HOST: db
+#      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
 
   zookeeper:
     image: wurstmeister/zookeeper
@@ -77,12 +77,12 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
-  kafdrop:
-    image: obsidiandynamics/kafdrop
-    ports:
-      - "9000:9000"
-    environment:
-      KAFKA_BROKERCONNECT: kafka:9092
+#  kafdrop:
+#    image: obsidiandynamics/kafdrop
+#    ports:
+#      - "9000:9000"
+#    environment:
+#      KAFKA_BROKERCONNECT: kafka:9092
 
 volumes:
   my-db:
